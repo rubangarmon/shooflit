@@ -1,0 +1,35 @@
+
+.site-layout-content {
+  min-width: 900px;
+  padding: 24px;
+  background: #fff;
+}
+
+.container {
+  min-height: 85vh;
+  padding: 1em 2em;
+  margin: 0 auto;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.random-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 500ms ease-in;
+  user-select: none;
+}
+
+.random-item:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.anticon-delete {
+  cursor: pointer;
+}
