@@ -1,14 +1,60 @@
-// import express from 'express';
-const express = require('express')
-const port = 3002;
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+
+import models, { connectDb } from "./models";
+import routes from "./routes";
 
 var app = express();
+app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send("Welcome to shooflit")
+// Built-In Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Custom middleware
+
+app.use(async (req, res, next) => {
+  req.context = {
+    models
+  };
+  next();
 });
 
-// app.use(cors());
-var server = app.listen(port , () => {
-    console.log(`LISTING AT http://localhost:${port}`);
-})
+// Routes
+
+app.use("/list", routes.list);
+
+// Start
+
+const eraseDatabaseOnSync = false;
+
+connectDb().then(async () => {
+  if (eraseDatabaseOnSync) {
+    await Promise.all([models.List.deleteMany({})]);
+    createList();
+  }
+  app.listen(process.env.PORT, () => {
+    console.log(`LISTING AT http://localhost:${process.env.PORT}`);
+  });
+});
+
+const createList = async () => {
+  const item1 = new models.Item({
+    text: "Chuchi item 1",
+  });
+  const item2 = new models.Item({
+    text: "Chuchi item 2",
+  });
+  const list1 = new models.List({
+    name: "list1",
+    items: [item1, item2],
+  });
+  const list2 = new models.List({
+    name: "list2",
+    items: [item1, item2],
+  });
+
+  await list1.save();
+  await list2.save();
+};
