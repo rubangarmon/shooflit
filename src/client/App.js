@@ -2,6 +2,7 @@ import Main from "./containers/Main";
 import "./styles/styles.css";
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
+import React from 'react'
 
 const { Header } = Layout;
 
