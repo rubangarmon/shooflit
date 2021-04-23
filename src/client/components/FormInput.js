@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useRandomListContext from "../hooks/useRandomListContext";
 import { useForm } from "react-hook-form";
-import { Input, Button } from "antd";
 
 const FormInputList = () => {
   const [state, actions] = useRandomListContext();
@@ -19,16 +18,16 @@ const FormInputList = () => {
   useEffect(() => {
     register(
       { name: "inputName", type: "custom" },
-      { required: true, minLength: 5, min: 1 }
+      { required: true}
     );
   }, [register]);
-
+  console.dir(register)
   return (
     <div style={{ height: " 84px" }}>
       <div className="form-container">
         <form onSubmit={handleSubmit(onSubmit)}>
 
-        <Input
+        <input
           style={{ marginRight: "10px" }}
           type="text"
           name="inputName"
@@ -40,16 +39,15 @@ const FormInputList = () => {
           }}
           // ref={register({ required: true, maxLength: 20 })}
           // ref
-          onPressEnter={handleSubmit(onSubmit)}
+          // onPressEnter={handleSubmit(onSubmit)}
         />
 
-        <Button
+        <button
           type="primary"
-          htmlType="submit"
           // onClick={handleSubmit(onSubmit)}
         >
           Add
-        </Button>
+        </button>
         </form>
       </div>
       {errors.inputName && <span>This field is required</span>}

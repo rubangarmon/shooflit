@@ -1,13 +1,11 @@
 import React from "react";
-import RandomList from '../components/RandomList'
-import { Layout } from "antd";
-const { Content } = Layout;
+import RandomList from "../components/RandomList";
 
 const Main = () => {
   return (
-    <Content style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <RandomList />
-    </Content>
+    </div>
   );
 };
 

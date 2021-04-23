@@ -1,14 +1,11 @@
 import React from "react";
-import { List } from "antd";
-import { DeleteTwoTone } from "@ant-design/icons";
 
 const RandomItem = ({ item, onRemoveItem }) => {
-
   return (
-    <List.Item className="random-item">
+    <li className="random-item">
       <span>{item}</span>
-      <DeleteTwoTone twoToneColor="red" onClick={() => onRemoveItem(item)}/>
-    </List.Item>
+      <span onClick={() => onRemoveItem(item)}>delete</span>
+    </li>
   );
 };
 
