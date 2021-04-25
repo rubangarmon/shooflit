@@ -1,6 +1,6 @@
 import React from "react";
-import FormInput from "./FormInput";
-import RandomItem from "./RandomItem";
+import AddItem from "./AddItem";
+import Item from "./Item";
 import useRandomListContext from "../hooks/useRandomListContext";
 import { MersenneTwister19937, Random } from "random-js";
 
@@ -28,13 +28,13 @@ function RandomList() {
   return (
     <div className="site-layout-content">
       <div className="container">
-        <FormInput />
-        <button onClick={onShuffle}> Shuffle </button>
-        <button onClick={() => onPick(1)}>Pick</button>
+        <AddItem />
+        {/* <button onClick={onShuffle}> Shuffle </button>
+        <button onClick={() => onPick(1)}>Pick</button> */}
 
         {items &&
           items.map((item, index) => (
-            <RandomItem key={index} item={item} onRemoveItem={onRemoveItem} />
+            <Item key={index} item={item} onRemoveItem={onRemoveItem} />
           ))}
       </div>
     </div>
