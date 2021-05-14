@@ -26,10 +26,13 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".json", ".jsx"],
+    alias: {
+      clientApp: path.resolve(__dirname, '../src/client')
+    }
   },
   plugins: [
-    // Removes/cleans build folders and unused assets when rebuilding
     // new NodePolyfillPlugin(),
+    // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../src/client", "template.html"),

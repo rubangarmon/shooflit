@@ -1,7 +1,7 @@
 import React from "react";
 import AddItem from "./AddItem";
 import Item from "./Item";
-import useRandomListContext from "../hooks/useRandomListContext";
+import useRandomListContext from "clientApp/hooks/useRandomListContext";
 import { MersenneTwister19937, Random } from "random-js";
 
 const random = new Random(MersenneTwister19937.autoSeed());

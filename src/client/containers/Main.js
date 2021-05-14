@@ -1,8 +1,8 @@
 import React from "react";
 // import RandomList from "../components/RandomList";
-import ListItem from "../components/ListItem";
-import Control from "../components/Control";
-import useRandomListContext from "../hooks/useRandomListContext";
+import ListItem from "clientApp/components/ListItem";
+import Control from "clientApp/components/Control";
+import useRandomListContext from "clientApp/hooks/useRandomListContext";
 
 const Main = () => {
   const [{ items }] = useRandomListContext();
@@ -10,7 +10,7 @@ const Main = () => {
     <div className="main" style={{ display: "flex", justifyContent: "center" }}>
       <div className="site-layout-content">
         <ListItem items={items} />
-        <Control />
+        {/* <Control /> */}
       </div>
     </div>
   );
