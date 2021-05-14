@@ -26,7 +26,7 @@ function RandomList() {
   };
 
   return (
-    <div className="site-layout-content">
+    <div>
       <div className="container">
         <AddItem />
         {/* <button onClick={onShuffle}> Shuffle </button>

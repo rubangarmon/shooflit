@@ -7,7 +7,7 @@ import useRandomListContext from "../hooks/useRandomListContext";
 const Main = () => {
   const [{ items }] = useRandomListContext();
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="main" style={{ display: "flex", justifyContent: "center" }}>
       <div className="site-layout-content">
         <ListItem items={items} />
         <Control />

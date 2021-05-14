@@ -8,7 +8,7 @@ function ListItem({ items }) {
   };
 
   return (
-    <div className="list-item">
+    <div className="list-item container">
       {items &&
         items.map((item, index) => (
           <Item

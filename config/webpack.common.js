@@ -3,17 +3,16 @@ const paths = require("./paths");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
-const version = "2.0.0"
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + "/index.js"],
+  entry: paths.client.src + "/index.js",
   // Where webpack outputs the assets and bundles
   output: {
-    path: paths.build,
-    filename: `js/shooflit.[name].bundle-${version}.js`,
-    publicPath: "/",
+    path: paths.client.build,
+    filename: `js/shooflit.[name].bundle-${process.env.VERSION_CLIENT}.js`,
+    publicPath: "",
   },
   module: {
     rules: [
@@ -25,15 +24,18 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".json", ".jsx"],
+  },
   plugins: [
-    new NodePolyfillPlugin(),
     // Removes/cleans build folders and unused assets when rebuilding
+    // new NodePolyfillPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../src/client", "template.html"),
     }),
     new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"]
+      Buffer: ["buffer", "Buffer"],
     }),
   ],
 };

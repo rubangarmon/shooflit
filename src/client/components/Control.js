@@ -3,7 +3,7 @@ import AddItem from './AddItem'
 
 function Control() {
     return (
-        <div className="control">
+        <div className="control container">
             <AddItem />
         </div>
     )

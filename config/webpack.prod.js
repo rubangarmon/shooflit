@@ -8,13 +8,13 @@ module.exports = merge(common, {
   mode: "production",
   // Control how source maps are generated
   devtool: false,
-  output: {
-    publicPath: "./",
-  },
+  // output: {
+  //   publicPath: "./",
+  // },
   module: {
     rules: [
       {
-        test: /\.(scss|css)$/,
+        test: /\.(scss|css|sass)$/,
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",

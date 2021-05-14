@@ -1,23 +1,26 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const paths = require('./paths');
 
-module.exports = merge(common,{
+/** @type {import('webpack').Configuration} */
+const devConfig = {
     // Set the mode to development or production
     mode: 'development',
     // Control how source maps are generated
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     // Spin up a server for quick development
-
     devServer: {
-        historyApiFallback: true,
-        contentBase: paths.build,
+        contentBase: paths.client.build,
         open: true,
         compress: true,
         hot: true,
         port: 8000,
+        historyApiFallback: true,
+        // watchContentBase: true
     },
+    target: "web",
     module: {
         rules: [
             // Styles: Inject CSS into the head with source maps
@@ -30,5 +33,8 @@ module.exports = merge(common,{
     plugins: [
         // Only update what has changed on hot reload
         new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin()
     ],
-});
+};
+
+module.exports = merge(common, devConfig);
